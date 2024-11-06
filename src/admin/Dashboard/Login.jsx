@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Input from '../component/Input';
+import Input from '../../component/Input';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Correct method for login
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { auth } from '../firebase/firebaseconig'; 
 
-function Login() {
+
+function Loginadmin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -22,7 +22,7 @@ function Login() {
         console.log('User Data:', { email, password });
 
         // Navigate to the Home page after successful login
-        navigate('/');
+        navigate('/admin-dashboard');
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -65,17 +65,10 @@ function Login() {
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={true} closeOnClick pauseOnFocusLoss draggable pauseOnHover />
         
         {/* "Don't have an account?" link */}
-        <div className="text-center mt-4">
-          <p className="text-gray-600">
-            Don't have an account?{' '}
-            <a href="/signup" className="text-indigo-500 hover:text-indigo-700 font-semibold">
-              Create an account
-            </a>
-          </p>
-        </div>
+      
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Loginadmin;
